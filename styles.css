@@ -1,20 +1,30 @@
 * {
     border: 1px solid black;
-}
+} 
 
 body {
     padding: 0;
     margin: 0;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: whitesmoke;
+    background-color: rgb(230, 218, 218);
     text-align: center;
 }
 
+.header,
+.buttons,
+.resizer,
+.footer {
+    flex: auto;
+}
+
 /* Header & Footer */ 
+
 .header,
 .footer {
     padding: 10px 50px;
+    margin: 0;
     background-color: rgb(163, 121, 121);
 }
 
@@ -27,6 +37,7 @@ body {
 .header {
     font-size: 80px;
     font-weight: 500;
+    font-family: 'Rubik Beastly', cursive, sans-serif;
 }
 
 .footer {
@@ -35,6 +46,41 @@ body {
 
 /* Buttons */
 
+.buttons {
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button,
+input {
+    padding: 5px 5px;
+    border-radius: 5px;
+    height: 40px;
+    width: 80px;
+    font-weight: bold;
+    background-color: rgb(163, 121, 121);
+    border-style: none;
+    font-size: 15px;
+}
+
 /* Sketchpad */
+
+.sketchpad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px 10px 10px;
+}
+
+.grid {
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+}
 
 /* Resizer */
