@@ -1,4 +1,6 @@
 const DEFAULT_COLOR = 'white';
+let eraser = false;
+let rainbow = false;
 
 function createGrid (gridSize=16) {
     gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
@@ -10,6 +12,9 @@ function createGrid (gridSize=16) {
         gridItem.classList.add(`grid-item-${i}`);
         gridContainer.appendChild(gridItem);
     }
+
+    const gridItems = Array.from(document.querySelectorAll('.grid-items'));
+    gridItems.forEach(item => item.addEventListener('mouseover', switchColor));
 
     return;
 }
@@ -29,6 +34,7 @@ function switchColor(e) {
 }
 
 function clearGrid(e) {
+    const gridItems = Array.from(document.querySelectorAll('.grid-items'));
     gridItems.forEach(item => item.style['background-color'] = DEFAULT_COLOR);
     return;
 }
@@ -37,18 +43,24 @@ function toggleEraser(e) {
     rainbow = false;
     if (eraser === true) {
         eraser = false;
+        this.style['opacity'] = 0.7;
     } else {
         eraser = true;
+        this.style['opacity'] = 1;
     }
+    return;
 }
 
 function toggleRainbow(e) {
     eraser = false;
     if (rainbow === true) {
         rainbow = false;
+        this.style['opacity'] = 0.7;
     } else {
         rainbow = true;
+        this.style['opacity'] = 1;
     }
+    return;
 }
 
 function getRandowColor() {
@@ -60,19 +72,23 @@ function getRandowColor() {
     return color;
 }
 
-let eraser = false;
-let rainbow = false;
+function resetGrid(e) {
+    while (gridContainer.firstChild) {
+        gridContainer.removeChild(gridContainer.lastChild);
+    }
+    createGrid(this.value);
+    return;
+}
+
 const gridContainer = document.querySelector('.grid-container');
 createGrid();
 
-const gridItems = Array.from(document.querySelectorAll('.grid-items'));
-gridItems.forEach(item => item.addEventListener('mouseover', switchColor));
-
 const clearButton = document.querySelector('#clear');
-clearButton.addEventListener('click', clearGrid);
-
 const eraserButton = document.querySelector('#eraser');
-eraserButton.addEventListener('click', toggleEraser);
-
 const rainbowButton = document.querySelector('#rainbow');
+const sliderButton = document.querySelector("#slider");
+
+clearButton.addEventListener('click', clearGrid);
+eraserButton.addEventListener('click', toggleEraser);
 rainbowButton.addEventListener('click', toggleRainbow);
+sliderButton.addEventListener('click', resetGrid);

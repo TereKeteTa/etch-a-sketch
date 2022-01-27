@@ -84,5 +84,28 @@ input {
     display: grid;
 }
 
-
 /* Resizer */
+
+.resizer {
+    width: 100%;
+}
+
+#slider { 
+    -webkit-appearance: none;
+    width: 500px;
+    height: 15px;
+    background: rgb(163, 121, 121);
+    outline: none;
+}
+
+button,
+input {
+    opacity: 0.7;
+    transition: opacity .2s;
+}
+
+input:hover,
+button:hover {
+    opacity: 1;
+    cursor: pointer;
+}
