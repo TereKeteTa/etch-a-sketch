@@ -92,10 +92,29 @@ input {
 
 #slider { 
     -webkit-appearance: none;
+    appearance: none;
     width: 500px;
     height: 15px;
     background: rgb(163, 121, 121);
     outline: none;
+}
+
+/* Chrome */
+#slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: black;
+    border-radius: 50%;
+}
+
+/* Firefox */
+slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: black;
+    border-radius: 5px;
 }
 
 button,
