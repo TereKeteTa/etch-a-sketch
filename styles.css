@@ -23,7 +23,7 @@ body {
 
 .header,
 .footer {
-    padding: 10px 50px;
+    padding: 5px 50px;
     margin: 0;
     background-color: rgb(163, 121, 121);
 }
@@ -47,7 +47,7 @@ body {
 /* Buttons */
 
 .buttons {
-    padding: 20px 50px;
+    padding: 10px 50px;
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -97,6 +97,7 @@ input {
     height: 15px;
     background: rgb(163, 121, 121);
     outline: none;
+    margin: 20px;
 }
 
 /* Chrome */
@@ -124,7 +125,8 @@ input {
 }
 
 input:hover,
-button:hover {
+button:hover,
+.full-opacity {
     opacity: 1;
     cursor: pointer;
 }

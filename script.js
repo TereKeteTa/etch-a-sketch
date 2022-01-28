@@ -20,7 +20,7 @@ function createGrid (gridSize=16) {
 }
 
 function switchColor(e) {
-    const currentColor = document.querySelector('#current-color');
+    currentColor = document.querySelector('#current-color');
     if (eraser === false) {
         if (rainbow === false) {
             this.style['background-color'] = currentColor.value;
@@ -41,24 +41,26 @@ function clearGrid(e) {
 
 function toggleEraser(e) {
     rainbow = false;
+    rainbowButton.classList.remove('full-opacity');
+    this.classList.toggle('full-opacity');
     if (eraser === true) {
         eraser = false;
-        this.style['opacity'] = 0.7;
     } else {
         eraser = true;
-        this.style['opacity'] = 1;
     }
     return;
 }
 
 function toggleRainbow(e) {
     eraser = false;
+    eraserButton.classList.remove('full-opacity');
+    this.classList.toggle('full-opacity');
+    currentColor.classList.toggle('full-opacity');
     if (rainbow === true) {
         rainbow = false;
-        this.style['opacity'] = 0.7;
     } else {
         rainbow = true;
-        this.style['opacity'] = 1;
+        this.classList.add('full-opacity');
     }
     return;
 }
@@ -80,6 +82,15 @@ function resetGrid(e) {
     return;
 }
 
+function selectColor(e) {
+    eraser = false;
+    rainbow = false;
+    eraserButton.classList.remove('full-opacity');
+    rainbowButton.classList.remove('full-opacity');
+    this.classList.add('full-opacity');
+    return;
+}
+
 const gridContainer = document.querySelector('.grid-container');
 createGrid();
 
@@ -87,8 +98,12 @@ const clearButton = document.querySelector('#clear');
 const eraserButton = document.querySelector('#eraser');
 const rainbowButton = document.querySelector('#rainbow');
 const sliderButton = document.querySelector("#slider");
+let currentColor = document.querySelector('#current-color');
+
+currentColor.classList.add('full-opacity');
 
 clearButton.addEventListener('click', clearGrid);
 eraserButton.addEventListener('click', toggleEraser);
 rainbowButton.addEventListener('click', toggleRainbow);
 sliderButton.addEventListener('click', resetGrid);
+currentColor.addEventListener('click', selectColor);
